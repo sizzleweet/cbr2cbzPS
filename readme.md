@@ -33,3 +33,13 @@ Trid      --   Linux executable of trid  (http://mark0.net/soft-trid-e.html)
 Trid.exe  --   Windows executable of trid (http://mark0.net/soft-trid-e.html)
 
 cbx.trd   --   cbr/cbz definition file for trid
+
+
+
+<h2>To Run</h2>
+
+Navigate to where you have your script.  
+
+<b>Windows</b>powershell .\cbr2cbz.ps1
+
+<b>Linux</b>pwsh ./cbr2cbz.ps1
