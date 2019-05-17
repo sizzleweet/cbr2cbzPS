@@ -4,8 +4,9 @@
 
 
 #generating log files
-new-item ".\Fulloutput$([DateTime]::Now.ToString("yyyyMMdd-HHmmss")).txt"
-$fullOutput=(Get-ChildItem ".\" -filter "Fulloutput*").FullName | sort-object LastWriteTime | select-object -last 1
+#new-item ".\Fulloutput$([DateTime]::Now.ToString("yyyyMMdd-HHmmss")).txt"
+#$fullOutput=(Get-ChildItem ".\" -filter "Fulloutput*").FullName | sort-object LastWriteTime | select-object -last 1
+Start-Transcript -Path ".\Fulloutput$([DateTime]::Now.ToString("yyyyMMdd-HHmmss")).txt"
 new-item ".\cbr2cbzlog$([DateTime]::Now.ToString("yyyyMMdd-HHmmss")).txt"
 $cbr2cbzlog=(Get-ChildItem ".\" -filter "cbr2cbzlog*").FullName | sort-object LastWriteTime | select-object -last 1
 
@@ -31,26 +32,32 @@ function FolderPathUnRAR {
         $xdestinationfolder="$xdestinationroot$($x.Basename)"
         mkdir $xdestinationfolder
         
-        Write-Output "newfilename (only CBR's): $x"
+        Write-Output "$xfile: ready to unrar"
         &$unrarPath e -y -v $xfile $xdestinationfolder 2>&1 | Tee-Object -Variable unrarOutput
         $unrarOutput | ForEach-Object {
-            Write-output "$_`r`n" >>"$fullOutput"
+            #Write-output "$_`r`n" >>"$fullOutput"
             if($_ -like "*is not RAR archive*" -or $_ -like "*checksum error") {
+                write-output "$($x.name) - $($x.FullName) has an error:  $_"
                 "$($x.name) - $($x.FullName) has an error:  $_" | out-file  -append "$cbr2cbzlog"
             }            
         }
         
         $logparse = Get-Content "$cbr2cbzlog" | out-string           
         if ($logparse -like "*$($x.BaseName)*") {
+            Write-output "Bad File, Skipping ZIP $($x.BaseName)"
             "Bad File, Skipping ZIP $($x.BaseName)`r`n" | out-file  -append "$cbr2cbzlog"
+            Write-output "removing folder $xdestinationfolder"
             Remove-Item -force -Recurse $xdestinationfolder
         }
         else {
+            write-output "zipping $xdestinationfolder"
             [IO.Compression.ZipFile]::CreateFromDirectory("$xdestinationfolder","$xdestinationfolder.cbz")
+            write-output "removing $xdestinationfolder"
             Remove-Item -force -recurse $xdestinationfolder
+            write-output "removing $xfile"
             Remove-Item -force -recurse $xfile
         }
-    }
+    } Stop-Transcript
 }
 
 
