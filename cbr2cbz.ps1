@@ -5,7 +5,7 @@
 
 #generating log files
 new-item ".\Fulloutput$([DateTime]::Now.ToString("yyyyMMdd-HHmmss")).txt"
-$fullOutput=(Get-ChildItem ".\" -filter "Fulloutput*").FullName
+$fullOutput=(Get-ChildItem ".\" -filter "Fulloutput*").FullName | sort LastWriteTime | select -last 1
 new-item ".\cbr2cbzlog$([DateTime]::Now.ToString("yyyyMMdd-HHmmss")).txt"
 $cbr2cbzlog=(Get-ChildItem ".\" -filter "cbr2cbzlog*").FullName | sort LastWriteTime | select -last 1
 
@@ -40,7 +40,7 @@ function FolderPathUnRAR {
             }            
         }
         
-        $logparse = Get-Content ".\cbr2cbzlog.txt" | out-string           
+        $logparse = Get-Content "$cbr2cbzlog" | out-string           
         if ($logparse -like "*$($x.BaseName)*") {
             "Bad File, Skipping ZIP $($x.BaseName)`r`n" | out-file  -append "$cbr2cbzlog"
             Remove-Item -force -Recurse $xdestinationfolder
