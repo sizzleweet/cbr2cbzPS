@@ -44,7 +44,7 @@ function FolderPathUnRAR {
         
         $logparse = Get-Content "$cbr2cbzlog" | out-string           
         if ($logparse -like "*$($x.BaseName)*") {
-            Write-output "Bad File, Skipping ZIP $($x.BaseName)"
+            Write-output "Bad File, Skipping ZIP $($x.BaseName) and deleting $xdestinationfolder"
             "Bad File, Skipping ZIP $($x.BaseName)`r`n" | out-file  -append "$cbr2cbzlog"
             Write-output "removing folder $xdestinationfolder"
             Remove-Item -force -Recurse $xdestinationfolder
