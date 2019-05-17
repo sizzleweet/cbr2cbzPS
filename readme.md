@@ -20,6 +20,8 @@ cbx.trd   --   cbr/cbz definition file for trid
 
 
 Requires Unrar and Powershell to be installed.
+
 unrar download    --  https://www.rarlab.com/rar_add.htm
+
 powershell linux  --  https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6
 
