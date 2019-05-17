@@ -15,7 +15,7 @@ FullOutput will show a the full output of the script and unrar actions.
 <h1>Requirements</h1>
 
 
-TRiD has a weird issue with the "LANG=" value being set in linux.  From what I can tell if you set LANG=/usr/lib/locale/en_US (or whatever your LANG value should be) it will work.  It just needs to be a complete path.
+::tada::<b>TRiD has a weird issue with the "LANG=" value being set in linux.  From what I can tell if you set LANG=/usr/lib/locale/en_US (or whatever your LANG value should be) it will work.  It just needs to be a complete path.<b>::tada::
 
 Requires Unrar and Powershell to be installed.
 
