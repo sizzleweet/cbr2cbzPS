@@ -43,3 +43,9 @@ Navigate to where you have your script.
 <b>Windows:  </b>powershell .\cbr2cbz.ps1
 
 <b>Linux:  </b>pwsh ./cbr2cbz.ps1
+
+set paths to the required executables (unrar will be found automatically if it has a env variable assigned to it).
+
+For TRiD set absolute patht to executable e.g /path/to/trid or /path/to/trid.exe
+
+For comic directory make sure that you keep in mind this is recursive so all folders under the folder you enter will also be parsed.
