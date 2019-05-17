@@ -5,9 +5,9 @@
 
 #generating log files
 new-item ".\Fulloutput$([DateTime]::Now.ToString("yyyyMMdd-HHmmss")).txt"
-$fullOutput=(Get-ChildItem ".\" -filter "Fulloutput*").FullName | sort-object LastWriteTime | select -last 1
+$fullOutput=(Get-ChildItem ".\" -filter "Fulloutput*").FullName | sort-object LastWriteTime | select-object -last 1
 new-item ".\cbr2cbzlog$([DateTime]::Now.ToString("yyyyMMdd-HHmmss")).txt"
-$cbr2cbzlog=(Get-ChildItem ".\" -filter "cbr2cbzlog*").FullName | sort-object LastWriteTime | select -last 1
+$cbr2cbzlog=(Get-ChildItem ".\" -filter "cbr2cbzlog*").FullName | sort-object LastWriteTime | select-object -last 1
 
 
 #if path is to a folder
