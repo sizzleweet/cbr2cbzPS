@@ -7,7 +7,7 @@
 new-item ".\Fulloutput$([DateTime]::Now.ToString("yyyyMMdd-HHmmss")).txt"
 $fullOutput=(Get-ChildItem ".\" -filter "Fulloutput*").FullName
 new-item ".\cbr2cbzlog$([DateTime]::Now.ToString("yyyyMMdd-HHmmss")).txt"
-$cbr2cbzlog=(Get-ChildItem ".\" -filter "cbr2cbzlog*").FullName
+$cbr2cbzlog=(Get-ChildItem ".\" -filter "cbr2cbzlog*").FullName | sort LastWriteTime | select -last 1
 
 
 #if path is to a folder
