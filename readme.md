@@ -1,6 +1,5 @@
 <h1>Summary</h1>
---------------------------------------------------
-  
+
 
 This script will determine the correct extension for your comic book files (.cbr or .cbz) and rename them accordingly.
 
@@ -14,7 +13,7 @@ FullOutput will show a the full output of the script and unrar actions.
 
 
 <h1>Requirements</h1>
---------------------------------------------------
+
 
 TRiD has a weird issue with the "LANG=" value being set in linux.  From what I can tell if you set LANG=/usr/lib/locale/en_US (or whatever your LANG value should be) it will work.  It just needs to complete path.
 
@@ -27,7 +26,7 @@ powershell linux  --  https://docs.microsoft.com/en-us/powershell/scripting/inst
 
 
 <h1>Files And explanations </h1>
---------------------------------------------------
+
 
 Trid      --   Linux executable of trid  (http://mark0.net/soft-trid-e.html)
 
