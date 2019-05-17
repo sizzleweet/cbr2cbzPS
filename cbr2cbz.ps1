@@ -32,7 +32,7 @@ function FolderPathUnRAR {
         $xdestinationfolder="$xdestinationroot$($x.Basename)"
         mkdir $xdestinationfolder
         
-        Write-Output "$xfile: ready to unrar"
+        Write-Output "$xfile : ready to unrar"
         &$unrarPath e -y -v $xfile $xdestinationfolder 2>&1 | Tee-Object -Variable unrarOutput
         $unrarOutput | ForEach-Object {
             #Write-output "$_`r`n" >>"$fullOutput"
