@@ -94,7 +94,7 @@ else {
 
 
 #get and check path to trid
-#$tridpath="Z:\Comics\cbr2cbz\app\trid.exe"    ---- uncomment this line out and comment other line out if you want to set it for all run
+#$tridpath="c:\user\path\to\tridapplicationfile"    ---- uncomment this line out and comment other line out if you want to set it for all run
 $tridpath=Read-Host -Prompt "Please enter path to trid application file"
 if([string]::IsNullOrEmpty($tridPath) -or (Test-Path -LiteralPath $tridPath) -ne $true -or $tridPath -notlike "*trid*") {
     Write-Error "Trid path not good '$tridPath'."
@@ -105,7 +105,7 @@ else {
 }
 
 #Get and check path to trid def file
-#$tridDef="Z:\Comics\cbr2cbz\app\cbx.trd"    ---- uncomment this line out and comment other line out if you want to set it for all run
+#$tridDef="c:\user\path\to\definitionfile.trd"    ---- uncomment this line out and comment other line out if you want to set it for all run
 $tridDef=Read-Host -Prompt "Please enter path to trid definition file (.trd)"
 if ([string]::IsNullOrEmpty($tridDef) -or (Test-Path -LiteralPath $tridDef) -ne $true -or $tridDef -notlike "*.trd") {
     Write-Error "TridDefinition path not good ya dingus '$tridDef'."
@@ -116,7 +116,7 @@ else {
 }
 
 
-#$comicPath="c:\users\alex\desktop\cbr2cbz" ---- uncomment this line out and comment other line out if you want to set it for all run
+#$comicPath="c:\user\path\to\comics" ---- uncomment this line out and comment other line out if you want to set it for all run
 $comicPath=Read-Host "Please enter path to comics"
 if([string]::IsNullOrEmpty($comicPath) -or (Test-Path -LiteralPath $comicPath) -ne $true) {
 
