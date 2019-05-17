@@ -1,7 +1,11 @@
-﻿#CBR to #CBZ
+#CBR to #CBZ
 [Reflection.Assembly]::LoadWithPartialName("System.IO.Compression.FileSystem")
+
+#generating log files
 new-item ".\Fulloutput$([DateTime]::Now.ToString("yyyyMMdd-HHmmss")).txt"
 $fullOutput=(Get-ChildItem ".\" -filter "Fulloutput*").FullName
+if((get-childitem ".\" -filter "cbr2cbzlog*").exists){Remove-Item ".\cbr2cbzlog.txt"}
+new-item ".\cbr2cbzlog$([DateTime]::Now.ToString("yyyyMMdd-HHmmss")).txt"
 
 #if path is to a folder
 function FolderPath {
