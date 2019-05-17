@@ -8,5 +8,7 @@ FullOutput will show a the full output of the script and unrar actions.
 
 
 Trid -- Linux executable of trid  (http://mark0.net/soft-trid-e.html
+
 Trid.exe -- Windows executable of trid (http://mark0.net/soft-trid-e.html)
+
 cbx.trd  -- cbr/cbz definition file for trid
