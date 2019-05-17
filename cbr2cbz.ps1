@@ -1,11 +1,14 @@
 #CBR to #CBZ
 [Reflection.Assembly]::LoadWithPartialName("System.IO.Compression.FileSystem")
 
+
+
 #generating log files
 new-item ".\Fulloutput$([DateTime]::Now.ToString("yyyyMMdd-HHmmss")).txt"
 $fullOutput=(Get-ChildItem ".\" -filter "Fulloutput*").FullName
-if((get-childitem ".\" -filter "cbr2cbzlog*").exists){Remove-Item ".\cbr2cbzlog.txt"}
 new-item ".\cbr2cbzlog$([DateTime]::Now.ToString("yyyyMMdd-HHmmss")).txt"
+$cbr2cbzlog=(Get-ChildItem ".\" -filter "cbr2cbzlog*").FullName
+
 
 #if path is to a folder
 function FolderPath {
@@ -33,13 +36,13 @@ function FolderPathUnRAR {
         $unrarOutput | ForEach-Object {
             Write-output "$_`r`n" >>"$fullOutput"
             if($_ -like "*is not RAR archive*" -or $_ -like "*checksum error") {
-                "$($x.name) - $($x.FullName) has an error:  $_" | out-file  -append ".\cbr2cbzlog.txt"
+                "$($x.name) - $($x.FullName) has an error:  $_" | out-file  -append "$cbr2cbzlog"
             }            
         }
         
         $logparse = Get-Content ".\cbr2cbzlog.txt" | out-string           
         if ($logparse -like "*$($x.BaseName)*") {
-            "Bad File, Skipping ZIP $($x.BaseName)`r`n" | out-file  -append ".\cbr2cbzlog.txt"
+            "Bad File, Skipping ZIP $($x.BaseName)`r`n" | out-file  -append "$cbr2cbzlog"
             Remove-Item -force -Recurse $xdestinationfolder
         }
         else {
@@ -89,8 +92,7 @@ else {
 }
 
 
-if((get-childitem ".\" -filter "cbr2cbzlog*").exists){Remove-Item ".\cbr2cbzlog.txt"}
-new-item ".\cbr2cbzlog.txt"
+
 #get and check path to trid
 #$tridpath="Z:\Comics\cbr2cbz\app\trid.exe"    ---- uncomment this line out and comment other line out if you want to set it for all run
 $tridpath=Read-Host -Prompt "Please enter path to trid application file"
