@@ -37,7 +37,7 @@ function FolderPathUnRAR {
         $unrarOutput | ForEach-Object {
             #Write-output "$_`r`n" >>"$fullOutput"
             if($_ -like "*is not RAR archive*" -or $_ -like "*checksum error") {
-                write-output "$($x.name) - $($x.FullName) has an error:  $_"
+                write-output "$_"
                 "$($x.name) - $($x.FullName) has an error:  $_" | out-file  -append "$cbr2cbzlog"
             }            
         }
