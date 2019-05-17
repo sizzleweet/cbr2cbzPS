@@ -40,6 +40,6 @@ cbx.trd   --   cbr/cbz definition file for trid
 
 Navigate to where you have your script.  
 
-<b>Windows</b>powershell .\cbr2cbz.ps1
+<b>Windows:  </b>powershell .\cbr2cbz.ps1
 
-<b>Linux</b>pwsh ./cbr2cbz.ps1
+<b>Linux:  </b>pwsh ./cbr2cbz.ps1
