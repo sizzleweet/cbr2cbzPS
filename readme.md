@@ -46,6 +46,6 @@ Navigate to where you have your script.
 
 set paths to the required executables (unrar will be found automatically if it has a env variable assigned to it).
 
-For TRiD set absolute patht to executable e.g /path/to/trid or /path/to/trid.exe
+For TRiD set absolute patht to executable e.g /path/to/trid (linux) or /path/to/trid.exe (windows)
 
 For comic directory make sure that you keep in mind this is recursive so all folders under the folder you enter will also be parsed.
